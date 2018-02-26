@@ -1,0 +1,23 @@
+h1 {
+	color: #FFFFFF;
+/*	border-color: #EDF3F9;
+	border-width: 5px;
+	border-style: solid;*/
+
+	border: 2px solid #EDF3F9;
+}
+
+li {
+	color: rgb(145, 102, 0);
+}
+
+h4 {
+	color: #B02D2A;
+}
+
+body{
+	background: #002554;
+/*	background: url(./Tyson_Logo_V_Blue_4C.png);
+	background-repeat: no-repeat;
+	background-size: cover;*/
+}
