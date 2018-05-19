@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Patatap Clone</title>
+	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/javascript" src="howler.js"></script>
+	<script type="text/javascript" src="data.js"></script>
+	<link rel="stylesheet" type="text/css" href="patatapClone.css">
+	<!-- Define inlined PaperScript associate it with myCanvas -->
+	<script type="text/paperscript" canvas="myCanvas">
+		var circles = [];
+
+		function onKeyDown(event) {
+			if(keyData[event.key]) {
+				var maxPoint = new Point(view.size.width, view.size.height);
+				var randomPoint = Point.random();
+				var point = maxPoint * randomPoint;
+				var circ = new Path.Circle(point, 500);
+				circ.fillColor = keyData[event.key].color;
+				keyData[event.key].sound.play();
+				circles.push(circ);
+		  }
+		}
+
+		function onFrame(event) {
+			for(var i = 0; i < circles.length; i++){
+				circles[i].fillColor.hue += 1;
+				circles[i].scale(.9);
+				if(circles[i].area < 1){
+		      circles[i].remove(); // remove the circle from the canvas
+		      circles.splice(i, 1); // remove the circle from the array
+		      i--; // decrement i so that the loop doesn't skip a circle because of .splice()
+		      console.log(circles);
+		    }
+			}
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
